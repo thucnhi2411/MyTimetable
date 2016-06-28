@@ -14,6 +14,8 @@
 		04A69BA21D22276A0090ECDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A69BA01D22276A0090ECDC /* LaunchScreen.storyboard */; };
 		04A69BAD1D22276A0090ECDC /* MyTimetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BAC1D22276A0090ECDC /* MyTimetableTests.swift */; };
 		04A69BB81D22276A0090ECDC /* MyTimetableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BB71D22276A0090ECDC /* MyTimetableUITests.swift */; };
+		04A69BC81D2231A50090ECDC /* SemesterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BC71D2231A50090ECDC /* SemesterTVC.swift */; };
+		04A69BCA1D2231E30090ECDC /* SemesterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BC91D2231E30090ECDC /* SemesterInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		04A69BB31D22276A0090ECDC /* MyTimetableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimetableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A69BB71D22276A0090ECDC /* MyTimetableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimetableUITests.swift; sourceTree = "<group>"; };
 		04A69BB91D22276A0090ECDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A69BC71D2231A50090ECDC /* SemesterTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemesterTVC.swift; path = ../SemesterTVC.swift; sourceTree = "<group>"; };
+		04A69BC91D2231E30090ECDC /* SemesterInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +103,9 @@
 			children = (
 				04A69B971D22276A0090ECDC /* AppDelegate.swift */,
 				04A69B991D22276A0090ECDC /* ViewController.swift */,
+				04A69BC71D2231A50090ECDC /* SemesterTVC.swift */,
 				04A69B9B1D22276A0090ECDC /* Main.storyboard */,
+				04A69BC91D2231E30090ECDC /* SemesterInfo.swift */,
 				04A69B9E1D22276A0090ECDC /* Assets.xcassets */,
 				04A69BA01D22276A0090ECDC /* LaunchScreen.storyboard */,
 				04A69BA31D22276A0090ECDC /* Info.plist */,
@@ -256,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A69BC81D2231A50090ECDC /* SemesterTVC.swift in Sources */,
+				04A69BCA1D2231E30090ECDC /* SemesterInfo.swift in Sources */,
 				04A69B9A1D22276A0090ECDC /* ViewController.swift in Sources */,
 				04A69B981D22276A0090ECDC /* AppDelegate.swift in Sources */,
 			);
@@ -482,6 +490,7 @@
 				04A69BBE1D22276A0090ECDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A69BBF1D22276A0090ECDC /* Build configuration list for PBXNativeTarget "MyTimetableTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				04A69BC11D22276A0090ECDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A69BC21D22276A0090ECDC /* Build configuration list for PBXNativeTarget "MyTimetableUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +508,7 @@
 				04A69BC41D22276A0090ECDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
