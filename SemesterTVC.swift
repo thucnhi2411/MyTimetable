@@ -10,7 +10,7 @@ import UIKit
 
 class SemesterTVC: UITableViewController {
     
-    let semesters = ["Fall 2016", "Spring 2017", "Fall 2017", "Spring 2018"]
+    var semesters = ["Fall 2016", "Spring 2017", "Fall 2017", "Spring 2018"]
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -29,15 +29,15 @@ class SemesterTVC: UITableViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "Add Semester" {
 			if let semesterInfo : SemesterInfo = segue.destinationViewController as? SemesterInfo {
-				semesterInfo.semesterArray = semesters
-				semesterInfo.parent = self
+				semesterInfo.parentView = self
 			}
 		}
 	}
     
 	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
+		print("hello")
 		tableView.reloadData()
+		super.viewWillAppear(animated)
 	}
 
 }

@@ -10,8 +10,7 @@ import UIKit
 
 class SemesterInfo: UIViewController {
 	
-	var semesterArray : [String] = Array()
-	var parent : UITableViewController = UITableViewController()
+	var parentView : SemesterTVC = SemesterTVC()
 	
 	@IBOutlet weak var season: UISegmentedControl!
 	
@@ -34,9 +33,7 @@ class SemesterInfo: UIViewController {
 			break
 		}
 		let academicYear = year.text!
-		semesterArray.append(seasonString + " " + academicYear)
-		parent.tableView.reloadData()
-	}
-	
+		parentView.semesters.append(seasonString + " " + academicYear)
+	}	
 	
 }
