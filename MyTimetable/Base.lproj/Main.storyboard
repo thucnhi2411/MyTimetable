@@ -7,7 +7,7 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--SemesterTVC-->
+        <!--Timetable-->
         <scene sceneID="clh-zP-mMQ">
             <objects>
                 <tableViewController id="xKd-rS-fU1" customClass="SemesterTVC" customModule="MyTimetable" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,6 +23,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="RTR-Za-o9U" kind="show" id="djJ-9g-kX1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -31,7 +34,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="tGC-S1-FJD">
+                    <navigationItem key="navigationItem" title="Timetable" id="tGC-S1-FJD">
                         <rightBarButtonItems>
                             <barButtonItem title="-" id="JPA-UJ-pXH">
                                 <connections>
@@ -50,6 +53,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFx-JP-cQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="674" y="199"/>
+        </scene>
+        <!--Week-->
+        <scene sceneID="zSl-1e-a6f">
+            <objects>
+                <tableViewController id="RTR-Za-o9U" customClass="week" customModule="MyTimetable" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rUk-iz-3f8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a80-eh-gOW">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a80-eh-gOW" id="e0t-AZ-yjW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RTR-Za-o9U" id="Kib-bH-IlB"/>
+                            <outlet property="delegate" destination="RTR-Za-o9U" id="qNb-S5-iiX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Week" id="bGi-yR-i1T"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jRB-mv-vEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1427" y="199"/>
         </scene>
         <!--Semester Info-->
         <scene sceneID="3YD-3f-xZp">
@@ -121,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J8-r9-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="209"/>
+            <point key="canvasLocation" x="665" y="961"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aq0-pL-m9h">

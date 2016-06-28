@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		005D4AA71D22364800E31122 /* SemesterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4AA61D22364800E31122 /* SemesterInfo.swift */; };
+		042F549E1D22830D002587B1 /* week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F549D1D22830D002587B1 /* week.swift */; };
 		04A69B981D22276A0090ECDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69B971D22276A0090ECDC /* AppDelegate.swift */; };
 		04A69B9A1D22276A0090ECDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69B991D22276A0090ECDC /* ViewController.swift */; };
 		04A69B9D1D22276A0090ECDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A69B9B1D22276A0090ECDC /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		005D4AA61D22364800E31122 /* SemesterInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInfo.swift; sourceTree = "<group>"; };
+		042F549D1D22830D002587B1 /* week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = week.swift; sourceTree = "<group>"; };
 		04A69B941D22276A0090ECDC /* MyTimetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTimetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A69B971D22276A0090ECDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A69B991D22276A0090ECDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +105,9 @@
 			children = (
 				04A69B971D22276A0090ECDC /* AppDelegate.swift */,
 				04A69B991D22276A0090ECDC /* ViewController.swift */,
-				04A69BC71D2231A50090ECDC /* SemesterTVC.swift */,
 				04A69B9B1D22276A0090ECDC /* Main.storyboard */,
+				04A69BC71D2231A50090ECDC /* SemesterTVC.swift */,
+				042F549D1D22830D002587B1 /* week.swift */,
 				04A69B9E1D22276A0090ECDC /* Assets.xcassets */,
 				04A69BA01D22276A0090ECDC /* LaunchScreen.storyboard */,
 				04A69BA31D22276A0090ECDC /* Info.plist */,
@@ -265,6 +268,7 @@
 				04A69BC81D2231A50090ECDC /* SemesterTVC.swift in Sources */,
 				005D4AA71D22364800E31122 /* SemesterInfo.swift in Sources */,
 				04A69B9A1D22276A0090ECDC /* ViewController.swift in Sources */,
+				042F549E1D22830D002587B1 /* week.swift in Sources */,
 				04A69B981D22276A0090ECDC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
