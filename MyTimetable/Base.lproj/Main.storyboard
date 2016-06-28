@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--SemesterTVC-->
@@ -31,11 +32,18 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tGC-S1-FJD">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="W5O-70-69X">
-                            <connections>
-                                <segue destination="ZgZ-vy-EaM" kind="show" identifier="Add Semester" id="cp7-jf-PrJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="-" id="JPA-UJ-pXH">
+                                <connections>
+                                    <action selector="deleteButton:" destination="xKd-rS-fU1" id="JNf-3x-lQc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="+" id="W5O-70-69X">
+                                <connections>
+                                    <segue destination="ZgZ-vy-EaM" kind="show" identifier="Add Semester" id="cp7-jf-PrJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

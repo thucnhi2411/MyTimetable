@@ -11,6 +11,7 @@ import UIKit
 class SemesterTVC: UITableViewController {
     
     var semesters = ["Fall 2016", "Spring 2017", "Fall 2017", "Spring 2018"]
+    var a: Int = 0
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -39,5 +40,17 @@ class SemesterTVC: UITableViewController {
 		tableView.reloadData()
 		super.viewWillAppear(animated)
 	}
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+         a = indexPath.row
+        
+    }
+    @IBAction func deleteButton(sender: AnyObject) {
+        semesters.removeAtIndex(a)
+        tableView.reloadData()
+    }
+  
+    
+   
 }
