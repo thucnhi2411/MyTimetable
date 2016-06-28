@@ -25,7 +25,19 @@ class SemesterTVC: UITableViewController {
         cell.textLabel?.text = semesters[indexPath.row]
         return cell
     }
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "Add Semester" {
+			if let semesterInfo : SemesterInfo = segue.destinationViewController as? SemesterInfo {
+				semesterInfo.semesterArray = semesters
+				semesterInfo.parent = self
+			}
+		}
+	}
     
-    
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+	}
 
 }

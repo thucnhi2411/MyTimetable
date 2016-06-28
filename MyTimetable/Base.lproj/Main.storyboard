@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--SemesterTVC-->
         <scene sceneID="clh-zP-mMQ">
             <objects>
-                <tableViewController id="xKd-rS-fU1" sceneMemberID="viewController">
+                <tableViewController id="xKd-rS-fU1" customClass="SemesterTVC" customModule="MyTimetable" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aKx-8X-kv2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1qw-dM-dMR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="semesters" selectionStyle="default" indentationWidth="10" reuseIdentifier="semesters" id="1qw-dM-dMR">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1qw-dM-dMR" id="f2r-xn-4sj">
@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="tGC-S1-FJD">
                         <barButtonItem key="rightBarButtonItem" title="+" id="W5O-70-69X">
                             <connections>
-                                <segue destination="ZgZ-vy-EaM" kind="show" id="cp7-jf-PrJ"/>
+                                <segue destination="ZgZ-vy-EaM" kind="show" identifier="Add Semester" id="cp7-jf-PrJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="674" y="199"/>
         </scene>
-        <!--View Controller-->
+        <!--Semester Info-->
         <scene sceneID="3YD-3f-xZp">
             <objects>
-                <viewController id="ZgZ-vy-EaM" sceneMemberID="viewController">
+                <viewController id="ZgZ-vy-EaM" customClass="SemesterInfo" customModule="MyTimetable" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LG7-f2-3Ym"/>
                         <viewControllerLayoutGuide type="bottom" id="eqK-i2-F3x"/>
@@ -58,7 +58,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Semester Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ry-Kb-ZZq">
                                 <rect key="frame" x="20" y="104" width="560" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rcH-8p-nUd">
@@ -72,7 +72,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Academic Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbc-AX-44x">
                                 <rect key="frame" x="20" y="233" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="htO-LP-1hz">
@@ -80,6 +80,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUH-6x-vwG">
+                                <rect key="frame" x="19" y="526" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonClicked:" destination="ZgZ-vy-EaM" eventType="touchUpInside" id="uSW-Ny-4lV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -99,10 +106,14 @@
                             <constraint firstItem="rcH-8p-nUd" firstAttribute="top" secondItem="LG7-f2-3Ym" secondAttribute="bottom" constant="107" id="yQ7-S4-KyE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="season" destination="rcH-8p-nUd" id="mQs-gn-v21"/>
+                        <outlet property="year" destination="htO-LP-1hz" id="sTj-4r-Tad"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J8-r9-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="199"/>
+            <point key="canvasLocation" x="1475" y="209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aq0-pL-m9h">
