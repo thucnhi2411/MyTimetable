@@ -18,6 +18,7 @@
 		04A69BAD1D22276A0090ECDC /* MyTimetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BAC1D22276A0090ECDC /* MyTimetableTests.swift */; };
 		04A69BB81D22276A0090ECDC /* MyTimetableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BB71D22276A0090ECDC /* MyTimetableUITests.swift */; };
 		04A69BC81D2231A50090ECDC /* SemesterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A69BC71D2231A50090ECDC /* SemesterTVC.swift */; };
+		04E5646B1D2CF36C00B51902 /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5646A1D2CF36C00B51902 /* ScheduleInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		04A69BB71D22276A0090ECDC /* MyTimetableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimetableUITests.swift; sourceTree = "<group>"; };
 		04A69BB91D22276A0090ECDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A69BC71D2231A50090ECDC /* SemesterTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemesterTVC.swift; path = ../SemesterTVC.swift; sourceTree = "<group>"; };
+		04E5646A1D2CF36C00B51902 /* ScheduleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				04A69B971D22276A0090ECDC /* AppDelegate.swift */,
 				04A69B991D22276A0090ECDC /* ViewController.swift */,
 				04A69B9B1D22276A0090ECDC /* Main.storyboard */,
+				04E5646A1D2CF36C00B51902 /* ScheduleInfo.swift */,
 				04A69BC71D2231A50090ECDC /* SemesterTVC.swift */,
 				042F549D1D22830D002587B1 /* week.swift */,
 				04A69B9E1D22276A0090ECDC /* Assets.xcassets */,
@@ -273,6 +276,7 @@
 				002D85BF1D23765400D47691 /* Day.swift in Sources */,
 				04A69B9A1D22276A0090ECDC /* ViewController.swift in Sources */,
 				042F549E1D22830D002587B1 /* week.swift in Sources */,
+				04E5646B1D2CF36C00B51902 /* ScheduleInfo.swift in Sources */,
 				04A69B981D22276A0090ECDC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

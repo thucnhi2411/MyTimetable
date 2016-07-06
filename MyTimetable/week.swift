@@ -12,6 +12,8 @@ class week: UITableViewController {
     
 	var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 	var weekSchedule = [Day]()
+    
+    
 	
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		// 5 sections, one day for each section
@@ -45,27 +47,54 @@ class week: UITableViewController {
 		wcell.detailTextLabel!.text = weekSchedule[dayIndex].courses[rowIndex]
         return wcell
     }
-	
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Add Course" {
+            if let ScheduleInfo: ScheduleInfo = segue.destinationViewController as? ScheduleInfo {
+                ScheduleInfo.parentView = self
+            }
+        }
+    }
+    
+    var MWFTimes = [String]()
+    var TRTimes = [String]()
+    var MWFCourses = [String]()
+    var TRCourses = [String]()
 	override func viewDidLoad() {
 		// initialize 5 empty days for weekSchedule
+        
+        
 		for dayName in weekdays {
 			weekSchedule.append( Day(inputName: dayName) )
-		}
+        }
 		
-		// let's try with some dummy data
-		let MWFTimes = ["09:00 - 09:50", "14:45 - 16:00"]
-		let MWFCourses = ["MATH 162", "CS 104"]
-		
-		// "Monday", "Wednesday", "Friday" are at indexes 0, 2, 4
-		weekSchedule[0].times = MWFTimes
-		weekSchedule[0].courses = MWFCourses
-		weekSchedule[2].times = MWFTimes
-		weekSchedule[2].courses = MWFCourses
-		weekSchedule[4].times = MWFTimes
-		weekSchedule[4].courses = MWFCourses
-		
+        
 		// don't forget this!
 		super.viewDidLoad()
 	}
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let selectedDay = weekSchedule[indexPath.section]
+            selectedDay.courses.removeAtIndex(indexPath.row)
+            selectedDay.times.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+        weekSchedule[0].times = MWFTimes
+        weekSchedule[0].courses = MWFCourses
+        weekSchedule[1].times = TRTimes
+        weekSchedule[1].courses = TRCourses
+        weekSchedule[2].times = MWFTimes
+        weekSchedule[2].courses = MWFCourses
+        weekSchedule[3].times = TRTimes
+        weekSchedule[3].courses = TRCourses
+        weekSchedule[4].times = MWFTimes
+        weekSchedule[4].courses = MWFCourses
+        print("hello")
+        tableView.reloadData()
+        super.viewWillAppear(animated)
+    }
 
 }

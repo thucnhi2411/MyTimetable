@@ -10,7 +10,8 @@ import UIKit
 
 class SemesterTVC: UITableViewController {
     
-    var semesters = ["Fall 2016", "Spring 2017", "Fall 2017", "Spring 2018"]
+    var semesters = [String]()
+    var semesterSchedule = [String: [Day]]()
     var a: Int = 0
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -47,10 +48,11 @@ class SemesterTVC: UITableViewController {
          a = indexPath.row
         
     }
-    @IBAction func deleteButton(sender: AnyObject) {
-        semesters.removeAtIndex(a)
-        tableView.reloadData()
+    @IBAction func deleteButton(sender: UIBarButtonItem) {
+    tableView.setEditing( true, animated: true )
+    tableView.reloadData()
     }
+   
   
     
    
