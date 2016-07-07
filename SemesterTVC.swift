@@ -36,7 +36,15 @@ class SemesterTVC: UITableViewController {
 				semesterInfo.parentView = self
 			}
 		}
+        if segue.identifier == "View Semester" {
+            if let week : week = segue.destinationViewController as? week {
+                week.parentView = self
+            }
+        }
+
 	}
+    
+    
     
 	override func viewWillAppear(animated: Bool) {
 		print("hello")

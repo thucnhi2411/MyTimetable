@@ -12,6 +12,7 @@ class week: UITableViewController {
     
 	var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 	var weekSchedule = [Day]()
+    var parentView: SemesterTVC = SemesterTVC()
     
     
 	
