@@ -19,6 +19,7 @@ class Day {
 	var name = ""
 	
 	init(inputName: String) {
+        print("Hi")
 		name = inputName
 	}
 	

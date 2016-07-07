@@ -10,9 +10,10 @@ import UIKit
 
 class SemesterTVC: UITableViewController {
     
-    var semesters = [String]()
-    var semesterSchedule = [String: [Day]]()
-    var a: Int = 0
+    var semesters = [String : String]()
+    var key = [String]()
+    
+   
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -24,11 +25,11 @@ class SemesterTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("semesters", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = semesters[indexPath.row]
+        cell.textLabel?.text = key[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
-	
+   
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "Add Semester" {
 			if let semesterInfo : SemesterInfo = segue.destinationViewController as? SemesterInfo {
@@ -43,11 +44,7 @@ class SemesterTVC: UITableViewController {
 		super.viewWillAppear(animated)
 	}
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-         a = indexPath.row
-        
-    }
+    
     @IBAction func deleteButton(sender: UIBarButtonItem) {
     tableView.setEditing( true, animated: true )
     tableView.reloadData()
