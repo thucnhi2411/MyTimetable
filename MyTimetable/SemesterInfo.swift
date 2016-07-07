@@ -34,7 +34,7 @@ class SemesterInfo: UIViewController {
 		}
 		let academicYear = year.text!
         let semesterName = seasonString + " " + academicYear
-		parentView.key.append(semesterName)
+		parentView.semesters.append(semesterName)
         
 	}	
 	

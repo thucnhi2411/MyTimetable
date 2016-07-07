@@ -10,8 +10,8 @@ import UIKit
 
 class SemesterTVC: UITableViewController {
     
-    var semesters = [String : String]()
-    var key = [String]()
+    var dictsemesters = [String : String]()
+    var semesters = [String]()
     
    
     
@@ -25,7 +25,7 @@ class SemesterTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("semesters", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = key[indexPath.row]
+        cell.textLabel?.text = semesters[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
