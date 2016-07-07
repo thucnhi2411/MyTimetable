@@ -81,17 +81,25 @@ class week: UITableViewController {
             
         }
     }
+    func addCourse(dayName: String, courseName: String, time: String) {
+        let index = weekdays.indexOf( dayName)!
+        let day = parentView.dictsemesters[parentView.selectedSemesterName]![index]
+        day.courses.append(courseName)
+        day.times.append(time)
+    }
+    
     override func viewWillAppear(animated: Bool) {
-        parentView.dictsemesters[parentView.selectedSemesterName]![0].times = MWFTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![0].courses = MWFCourses
-        parentView.dictsemesters[parentView.selectedSemesterName]![1].times = TRTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![1].courses = TRCourses
-        parentView.dictsemesters[parentView.selectedSemesterName]![2].times = MWFTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![2].courses = MWFCourses
-        parentView.dictsemesters[parentView.selectedSemesterName]![3].times = TRTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![3].courses = TRCourses
-        parentView.dictsemesters[parentView.selectedSemesterName]![4].times = MWFTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![4].courses = MWFCourses
+        for i in 0...5 {
+            if i == 0 || i == 2 || i == 4 {
+                parentView.dictsemesters[parentView.selectedSemesterName]![i].times = MWFTimes
+                parentView.dictsemesters[parentView.selectedSemesterName]![i].courses = MWFCourses
+            }
+            else {
+        
+        parentView.dictsemesters[parentView.selectedSemesterName]![i].times = TRTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![i].courses = TRCourses
+            }
+        }
         print("hello")
         tableView.reloadData()
         super.viewWillAppear(animated)

@@ -22,12 +22,14 @@ class ScheduleInfo: UIViewController {
     @IBAction func submitButton(sender: UIButton) {
         let selectedDate = date.selectedSegmentIndex
         if selectedDate == 0 {
-            parentView.MWFTimes.append(time.text!)
-            parentView.MWFCourses.append(course.text!)
+            parentView.addCourse("Monday", courseName: course.text!, time: time.text!)
+            parentView.addCourse("Wednesday", courseName: course.text!, time: time.text!)
+            parentView.addCourse("Friday", courseName: course.text!, time: time.text!)
+            
         }
         else {
-            parentView.TRTimes.append(time.text!)
-            parentView.TRCourses.append(course.text!)
+            parentView.addCourse("Thursday", courseName: course.text!, time: time.text!)
+            parentView.addCourse("Saturday", courseName: course.text!, time: time.text!)
         }
         
     }
