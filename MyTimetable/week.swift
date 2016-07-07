@@ -89,18 +89,6 @@ class week: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        for i in 0...5 {
-            if i == 0 || i == 2 || i == 4 {
-                parentView.dictsemesters[parentView.selectedSemesterName]![i].times = MWFTimes
-                parentView.dictsemesters[parentView.selectedSemesterName]![i].courses = MWFCourses
-            }
-            else {
-        
-        parentView.dictsemesters[parentView.selectedSemesterName]![i].times = TRTimes
-        parentView.dictsemesters[parentView.selectedSemesterName]![i].courses = TRCourses
-            }
-        }
-        print("hello")
         tableView.reloadData()
         super.viewWillAppear(animated)
     }
