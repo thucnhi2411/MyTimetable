@@ -32,7 +32,7 @@ class ScheduleInfo: UIViewController {
         }
         if userDidFuckUp == true {
             
-            let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Ooops!", message: "This course has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "Got it!!!", style: UIAlertActionStyle.Cancel) { (ACTION) in
                 print("OK Button tapped")
             }
@@ -51,8 +51,8 @@ class ScheduleInfo: UIViewController {
             
         }
         else {
+            parentView.addCourse("Tuesday", courseName: course.text!, time: time.text!)
             parentView.addCourse("Thursday", courseName: course.text!, time: time.text!)
-            parentView.addCourse("Saturday", courseName: course.text!, time: time.text!)
         }
             }
         
