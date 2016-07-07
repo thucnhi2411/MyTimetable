@@ -11,7 +11,6 @@ import UIKit
 class week: UITableViewController {
     
 	var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-	var weekSchedule = [Day]()
     var parentView: SemesterTVC = SemesterTVC()
     
     
@@ -23,7 +22,7 @@ class week: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// the number of courses on each day
-        let day = weekSchedule[section]
+        let day = parentView.dictsemesters[parentView.selectedSemesterName]![section]
 		return day.courses.count
     }
 	
@@ -42,10 +41,10 @@ class week: UITableViewController {
 		let rowIndex = indexPath.row
 		
 		// display the time on the left
-		wcell.textLabel!.text = weekSchedule[dayIndex].times[rowIndex]
+		wcell.textLabel!.text = parentView.dictsemesters[parentView.selectedSemesterName]![dayIndex].times[rowIndex]
 		
 		// display the course name on the right
-		wcell.detailTextLabel!.text = weekSchedule[dayIndex].courses[rowIndex]
+		wcell.detailTextLabel!.text = parentView.dictsemesters[parentView.selectedSemesterName]![dayIndex].courses[rowIndex]
         return wcell
     }
     
@@ -66,7 +65,7 @@ class week: UITableViewController {
         
         
 		for dayName in weekdays {
-			weekSchedule.append( Day(inputName: dayName) )
+			parentView.dictsemesters[parentView.selectedSemesterName]?.append( Day(inputName: dayName) )
         }
 		
         
@@ -75,7 +74,7 @@ class week: UITableViewController {
 	}
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let selectedDay = weekSchedule[indexPath.section]
+            let selectedDay = parentView.dictsemesters[parentView.selectedSemesterName]![indexPath.section]
             selectedDay.courses.removeAtIndex(indexPath.row)
             selectedDay.times.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -83,16 +82,16 @@ class week: UITableViewController {
         }
     }
     override func viewWillAppear(animated: Bool) {
-        weekSchedule[0].times = MWFTimes
-        weekSchedule[0].courses = MWFCourses
-        weekSchedule[1].times = TRTimes
-        weekSchedule[1].courses = TRCourses
-        weekSchedule[2].times = MWFTimes
-        weekSchedule[2].courses = MWFCourses
-        weekSchedule[3].times = TRTimes
-        weekSchedule[3].courses = TRCourses
-        weekSchedule[4].times = MWFTimes
-        weekSchedule[4].courses = MWFCourses
+        parentView.dictsemesters[parentView.selectedSemesterName]![0].times = MWFTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![0].courses = MWFCourses
+        parentView.dictsemesters[parentView.selectedSemesterName]![1].times = TRTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![1].courses = TRCourses
+        parentView.dictsemesters[parentView.selectedSemesterName]![2].times = MWFTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![2].courses = MWFCourses
+        parentView.dictsemesters[parentView.selectedSemesterName]![3].times = TRTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![3].courses = TRCourses
+        parentView.dictsemesters[parentView.selectedSemesterName]![4].times = MWFTimes
+        parentView.dictsemesters[parentView.selectedSemesterName]![4].courses = MWFCourses
         print("hello")
         tableView.reloadData()
         super.viewWillAppear(animated)

@@ -35,6 +35,7 @@ class SemesterInfo: UIViewController {
 		let academicYear = year.text!
         let semesterName = seasonString + " " + academicYear
 		parentView.semesters.append(semesterName)
+        parentView.dictsemesters[semesterName] = [Day]()
         
 	}	
 	

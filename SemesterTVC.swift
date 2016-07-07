@@ -10,8 +10,9 @@ import UIKit
 
 class SemesterTVC: UITableViewController {
     
-    var dictsemesters = [String : String]()
+    var dictsemesters = [String : [Day] ]()
     var semesters = [String]()
+    var selectedSemesterName = "String"
     
    
     
@@ -44,7 +45,9 @@ class SemesterTVC: UITableViewController {
 
 	}
     
-    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedSemesterName = semesters[indexPath.row]
+    }
     
 	override func viewWillAppear(animated: Bool) {
 		print("hello")
