@@ -14,6 +14,7 @@ class week: UITableViewController {
     var parentView: SemesterTVC = SemesterTVC()
     
     
+    
 	
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		// 5 sections, one day for each section
@@ -55,11 +56,6 @@ class week: UITableViewController {
             }
         }
     }
-    
-    var MWFTimes = [String]()
-    var TRTimes = [String]()
-    var MWFCourses = [String]()
-    var TRCourses = [String]()
 	override func viewDidLoad() {
 		// initialize 5 empty days for weekSchedule
         

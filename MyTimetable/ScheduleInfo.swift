@@ -12,6 +12,8 @@ class ScheduleInfo: UIViewController {
     
     var parentView : week = week()
     
+    
+    
     @IBOutlet weak var course: UITextField!
     
 
@@ -21,6 +23,27 @@ class ScheduleInfo: UIViewController {
     
     @IBAction func submitButton(sender: UIButton) {
         let selectedDate = date.selectedSegmentIndex
+        var weekSchedule = parentView.parentView.dictsemesters[parentView.parentView.selectedSemesterName]
+        var userDidFuckUp = false
+        for day in weekSchedule! {
+            if day.courses.contains(course.text!) {
+                 userDidFuckUp = true
+            }
+        }
+        if userDidFuckUp == true {
+            
+            let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "Got it!!!", style: UIAlertActionStyle.Cancel) { (ACTION) in
+                print("OK Button tapped")
+            }
+            
+            alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        else {
+            
+        
         if selectedDate == 0 {
             parentView.addCourse("Monday", courseName: course.text!, time: time.text!)
             parentView.addCourse("Wednesday", courseName: course.text!, time: time.text!)
@@ -31,6 +54,7 @@ class ScheduleInfo: UIViewController {
             parentView.addCourse("Thursday", courseName: course.text!, time: time.text!)
             parentView.addCourse("Saturday", courseName: course.text!, time: time.text!)
         }
+            }
         
     }
 }

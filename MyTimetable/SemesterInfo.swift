@@ -19,7 +19,7 @@ class SemesterInfo: UIViewController {
 	@IBAction func submitButtonClicked(sender: UIButton) {
 		let selected = season.selectedSegmentIndex
 		var seasonString = ""
-		switch selected {
+        switch selected {
 		case 0:
 			seasonString = "Spring"
 			break
@@ -34,9 +34,24 @@ class SemesterInfo: UIViewController {
 		}
 		let academicYear = year.text!
         let semesterName = seasonString + " " + academicYear
-		parentView.semesters.append(semesterName)
-        parentView.dictsemesters[semesterName] = [Day]()
         
-	}	
+        
+            if parentView.semesters.contains(semesterName) {
+                
+                let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "Got it!!!", style: UIAlertActionStyle.Cancel) { (ACTION) in
+                    print("OK Button tapped")
+                }
+
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            }
+            else {
+                parentView.semesters.append(semesterName)
+                parentView.dictsemesters[semesterName] = [Day]() }
+        
+        	}
+    
 	
 }

@@ -42,7 +42,7 @@ class SemesterTVC: UITableViewController {
                 week.parentView = self
             }
         }
-
+       
 	}
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -55,13 +55,20 @@ class SemesterTVC: UITableViewController {
 		super.viewWillAppear(animated)
 	}
     
-    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            semesters.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        }
+    }
     @IBAction func deleteButton(sender: UIBarButtonItem) {
     tableView.setEditing( true, animated: true )
     tableView.reloadData()
     }
    
-  
+    
+
     
    
 }
