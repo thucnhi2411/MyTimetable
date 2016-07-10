@@ -8,13 +8,19 @@
 
 import UIKit
 
+let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
 class week: UITableViewController {
     
-	var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-    var parentView: SemesterTVC = SemesterTVC()
-    
-    
-    
+	var selectedSemesterName = ""
+	var semesterSchedule : [ String : [[String]] ] {
+		get {
+			return NSUserDefaults().objectForKey( selectedSemesterName ) as! [ String : [[String]] ]
+		}
+		set {
+			NSUserDefaults().setObject(newValue, forKey: selectedSemesterName)
+		}
+	}
 	
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		// 5 sections, one day for each section
@@ -22,9 +28,18 @@ class week: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		// the number of courses on each day
-        let day = parentView.dictsemesters[parentView.selectedSemesterName]![section]
-		return day.courses.count
+		// get the name of the day
+		let dayName : String = weekdays[section]
+		
+		// get the schedule for the day
+		let daySchedule : [[String]] = semesterSchedule[ dayName ]!
+		
+		// get the array of classes in that day
+		let classes : [String] = daySchedule[0]
+		
+		// return the number of classes in that day
+		return classes.count
+		
     }
 	
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -35,55 +50,64 @@ class week: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let wcell = tableView.dequeueReusableCellWithIdentifier("weeks", forIndexPath: indexPath)
 		
-		// which day is it?
-		let dayIndex = indexPath.section
+		// get the name of the day
+		let dayName : String = weekdays[indexPath.section]
 		
-		// which row are we at?
-		let rowIndex = indexPath.row
+		// get the schedule for the day
+		let daySchedule : [[String]] = semesterSchedule[ dayName ]!
+
+		// get the array of classes in that day
+		let classes : [String] = daySchedule[0]
 		
-		// display the time on the left
-		wcell.textLabel!.text = parentView.dictsemesters[parentView.selectedSemesterName]![dayIndex].times[rowIndex]
+		// get the array of times in that day
+		let times : [String] = daySchedule[1]
 		
-		// display the course name on the right
-		wcell.detailTextLabel!.text = parentView.dictsemesters[parentView.selectedSemesterName]![dayIndex].courses[rowIndex]
-        return wcell
+		// display class name on the left
+		wcell.textLabel!.text = classes[indexPath.row]
+		
+		// display class time on the right
+		wcell.detailTextLabel!.text = times[indexPath.row]
+		
+		return wcell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Add Course" {
-            if let ScheduleInfo: ScheduleInfo = segue.destinationViewController as? ScheduleInfo {
-                ScheduleInfo.parentView = self
+            if let scheduleInfo: ScheduleInfo = segue.destinationViewController as? ScheduleInfo {
+                scheduleInfo.selectedSemesterName = selectedSemesterName
             }
         }
     }
-	override func viewDidLoad() {
-		// initialize 5 empty days for weekSchedule
-        
-        
-		for dayName in weekdays {
-			parentView.dictsemesters[parentView.selectedSemesterName]?.append( Day(inputName: dayName) )
-        }
-		
-        
-		// don't forget this!
-		super.viewDidLoad()
-	}
+	
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let selectedDay = parentView.dictsemesters[parentView.selectedSemesterName]![indexPath.section]
-            selectedDay.courses.removeAtIndex(indexPath.row)
-            selectedDay.times.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            
-        }
+			
+			// get the name of the day
+			let dayName : String = weekdays[indexPath.section]
+			
+			// get the schedule for the day
+			var daySchedule : [[String]] = semesterSchedule[ dayName ]!
+			
+			// get the array of classes in that day
+			var classes : [String] = daySchedule[0]
+			
+			// get the array of times in that day
+			var times : [String] = daySchedule[1]
+			
+			// remove course and time at indexPath.row
+			classes.removeAtIndex(indexPath.row)
+			times.removeAtIndex(indexPath.row)
+			
+			// update data source
+			daySchedule[0] = classes
+			daySchedule[1] = times
+			semesterSchedule[ dayName ] = daySchedule
+			
+			// update view
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+		}
     }
-    func addCourse(dayName: String, courseName: String, time: String) {
-        let index = weekdays.indexOf( dayName)!
-        let day = parentView.dictsemesters[parentView.selectedSemesterName]![index]
-        day.courses.append(courseName)
-        day.times.append(time)
-    }
-    
+	
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
         super.viewWillAppear(animated)

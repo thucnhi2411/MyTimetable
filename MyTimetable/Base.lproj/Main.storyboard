@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CvY-YS-cHS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,16 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="semesters" selectionStyle="default" indentationWidth="10" reuseIdentifier="semesters" id="1qw-dM-dMR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="semesters" selectionStyle="default" indentationWidth="10" reuseIdentifier="semester" id="1qw-dM-dMR">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1qw-dM-dMR" id="f2r-xn-4sj">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="RTR-Za-o9U" kind="show" identifier="View Semester" id="djJ-9g-kX1"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,24 +32,33 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Timetable" id="tGC-S1-FJD">
-                        <rightBarButtonItems>
-                            <barButtonItem title="-" id="JPA-UJ-pXH">
-                                <connections>
-                                    <action selector="deleteButton:" destination="xKd-rS-fU1" id="JNf-3x-lQc"/>
-                                </connections>
-                            </barButtonItem>
+                        <leftBarButtonItems>
                             <barButtonItem title="+" id="W5O-70-69X">
                                 <connections>
                                     <segue destination="ZgZ-vy-EaM" kind="show" identifier="Add Semester" id="cp7-jf-PrJ"/>
                                 </connections>
                             </barButtonItem>
-                        </rightBarButtonItems>
+                            <barButtonItem title="-" id="JPA-UJ-pXH">
+                                <connections>
+                                    <action selector="deleteButton:" destination="xKd-rS-fU1" id="JNf-3x-lQc"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="STM-XO-WOT">
+                            <connections>
+                                <action selector="doneDeletingPressed:" destination="xKd-rS-fU1" id="ybq-H6-ceb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="doneDeletingButton" destination="STM-XO-WOT" id="f7n-hU-9jc"/>
+                        <segue destination="RTR-Za-o9U" kind="show" identifier="View Semester" id="hsk-bd-QLW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFx-JP-cQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="199"/>
+            <point key="canvasLocation" x="677" y="199"/>
         </scene>
         <!--Schedule Info-->
         <scene sceneID="kwL-yx-rxd">
@@ -94,7 +100,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ht-Km-n45">
                                 <rect key="frame" x="19" y="369" width="560" height="25"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ha-oi-hak">

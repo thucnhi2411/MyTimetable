@@ -10,8 +10,6 @@ import UIKit
 
 class SemesterInfo: UIViewController {
 	
-	var parentView : SemesterTVC = SemesterTVC()
-	
 	@IBOutlet weak var season: UISegmentedControl!
 	
 	@IBOutlet weak var year: UITextField!
@@ -19,7 +17,7 @@ class SemesterInfo: UIViewController {
 	@IBAction func submitButtonClicked(sender: UIButton) {
 		let selected = season.selectedSegmentIndex
 		var seasonString = ""
-        switch selected {
+		switch selected {
 		case 0:
 			seasonString = "Spring"
 			break
@@ -33,25 +31,35 @@ class SemesterInfo: UIViewController {
 			break
 		}
 		let academicYear = year.text!
-        let semesterName = seasonString + " " + academicYear
-        
-        
-            if parentView.semesters.contains(semesterName) {
-                
-                let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
-                let okAction = UIAlertAction(title: "Got it!!!", style: UIAlertActionStyle.Cancel) { (ACTION) in
-                    print("OK Button tapped")
-                }
-
-                alert.addAction(okAction)
-                self.presentViewController(alert, animated: true, completion: nil)
-
-            }
-            else {
-                parentView.semesters.append(semesterName)
-                parentView.dictsemesters[semesterName] = [Day]() }
-        
-        	}
-    
+		let semesterName = seasonString + " " + academicYear
+		
+		if semesterArray.contains(semesterName) {
+			let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
+			let okAction = UIAlertAction(title: "Got it!!!", style: UIAlertActionStyle.Cancel) { (ACTION) in
+				print("OK Button tapped")
+			}
+			alert.addAction(okAction)
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
+		
+		else {
+			semesterArray.append( semesterName )
+			/**
+			* Example: given semesterName as "Fall 2018", the resulting object is a Dictionary
+			* that maps String to a pair of array (course array and time array) as follows:
+			*	"Monday" ---> [ ["CS 104", "MATH 162"], ["09:00 - 09:50", "14:00 - 14:45"] ]
+			*	"Tuesday" ---> [ ["FYS 162", "PHIL 200"], "13:15 - 14:30", "14:45 - 16:00"] ]
+			*/
+			var semesterSchedule = [ String : [[String]] ]()
+			
+			// initialize 5 empty days
+			for dayName in weekdays {
+				semesterSchedule[ dayName ] = [ [String](), [String]() ]
+			}
+			
+			NSUserDefaults().setObject( semesterSchedule, forKey: semesterName)
+		}
+		
+	}
 	
 }
