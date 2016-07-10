@@ -55,7 +55,7 @@ class SemesterTVC: UITableViewController {
    
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "View Semester" {
-            if let week : week = segue.destinationViewController as? week {
+            if let week : WeekTVC = segue.destinationViewController as? WeekTVC {
 				week.selectedSemesterName = selectedSemesterName
             }
         }

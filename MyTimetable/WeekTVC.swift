@@ -10,7 +10,7 @@ import UIKit
 
 let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-class week: UITableViewController {
+class WeekTVC: UITableViewController {
     
 	var selectedSemesterName = ""
 	var semesterSchedule : [ String : [[String]] ] {
@@ -20,6 +20,11 @@ class week: UITableViewController {
 		set {
 			NSUserDefaults().setObject(newValue, forKey: selectedSemesterName)
 		}
+	}
+	
+	override func viewDidLoad() {
+		self.title = selectedSemesterName
+		super.viewDidLoad()
 	}
 	
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -112,5 +117,5 @@ class week: UITableViewController {
         tableView.reloadData()
         super.viewWillAppear(animated)
     }
-
+	
 }
