@@ -9,13 +9,21 @@
 import UIKit
 
 class ScheduleInfo: UIViewController {
-	
+    var parentView: WeekTVC = WeekTVC()
 	@IBOutlet weak var course: UITextField!
 	
 	@IBOutlet weak var date: UISegmentedControl!
 	
-	@IBOutlet weak var time: UITextField!
+    @IBOutlet weak var fromString: UILabel!
 	
+    @IBOutlet weak var from: UIDatePicker!
+	
+    @IBAction func fromDatePicker(sender: AnyObject) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        var strDate = dateFormatter.stringFromDate(from.date)
+        self.fromString.text = strDate
+    }
 	var selectedSemesterName = ""
 	
 	var semesterSchedule : [ String : [[String]] ] {
@@ -27,6 +35,17 @@ class ScheduleInfo: UIViewController {
 		}
 	}
 	
+    @IBOutlet weak var toString: UILabel!
+    
+    @IBOutlet weak var to: UIDatePicker!
+    
+    @IBAction func toDatePicker(sender: AnyObject) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        var strDate1 = dateFormatter.stringFromDate(to.date)
+        self.toString.text = strDate1
+
+    }
 	@IBAction func submitButton(sender: UIButton) {
 		let selectedDate = date.selectedSegmentIndex
 		var userDidFuckUp = false
@@ -56,16 +75,16 @@ class ScheduleInfo: UIViewController {
 			
 		}			
 		else {
-			
+			var times = fromString.text! + " - " + toString.text!
 			if selectedDate == 0 {
-				addCourse("Monday", courseName: course.text!, time: time.text!)
-				addCourse("Wednesday", courseName: course.text!, time: time.text!)
-				addCourse("Friday", courseName: course.text!, time: time.text!)
+				addCourse("Monday", courseName: course.text!, time: times)
+				addCourse("Wednesday", courseName: course.text!, time: times)
+				addCourse("Friday", courseName: course.text!, time: times)
 				
 			}
 			else {
-				addCourse("Tuesday", courseName: course.text!, time: time.text!)
-				addCourse("Thursday", courseName: course.text!, time: time.text!)
+				addCourse("Tuesday", courseName: course.text!, time: times)
+				addCourse("Thursday", courseName: course.text!, time: times)
 			}
 		}
 		self.navigationController?.popViewControllerAnimated(true)
