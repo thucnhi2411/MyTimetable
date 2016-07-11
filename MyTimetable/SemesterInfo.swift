@@ -56,7 +56,7 @@ class SemesterInfo: UIViewController {
 			for dayName in weekdays {
 				semesterSchedule[ dayName ] = [ [String](), [String]() ]
 			}
-			
+			self.navigationController?.popViewControllerAnimated(true)
 			NSUserDefaults().setObject( semesterSchedule, forKey: semesterName)
 		}
 		

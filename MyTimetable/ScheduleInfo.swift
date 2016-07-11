@@ -68,7 +68,7 @@ class ScheduleInfo: UIViewController {
 				addCourse("Thursday", courseName: course.text!, time: time.text!)
 			}
 		}
-		
+		self.navigationController?.popViewControllerAnimated(true)
 	}
 	
 	func addCourse(dayName: String, courseName: String, time: String) {
