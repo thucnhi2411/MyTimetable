@@ -75,20 +75,24 @@ class ScheduleInfo: UIViewController {
 			
 		}			
 		else {
-			var times = fromString.text! + " - " + toString.text!
+			var hours = fromString.text! + " - " + toString.text!
 			if selectedDate == 0 {
-				addCourse("Monday", courseName: course.text!, time: times)
-				addCourse("Wednesday", courseName: course.text!, time: times)
-				addCourse("Friday", courseName: course.text!, time: times)
+				addCourse("Monday", courseName: course.text!, time: hours)
+				addCourse("Wednesday", courseName: course.text!, time: hours)
+				addCourse("Friday", courseName: course.text!, time: hours)
 				
 			}
 			else {
-				addCourse("Tuesday", courseName: course.text!, time: times)
-				addCourse("Thursday", courseName: course.text!, time: times)
+				addCourse("Tuesday", courseName: course.text!, time: hours)
+				addCourse("Thursday", courseName: course.text!, time: hours)
 			}
 		}
 		self.navigationController?.popViewControllerAnimated(true)
-	}
+      
+    
+    }
+    
+    
 	
 	func addCourse(dayName: String, courseName: String, time: String) {
 		// get the schedule for the day
@@ -110,5 +114,6 @@ class ScheduleInfo: UIViewController {
 		semesterSchedule[ dayName ] = daySchedule
 		
 	}
+  
 
 }
