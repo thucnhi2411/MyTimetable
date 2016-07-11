@@ -9,6 +9,10 @@
 import UIKit
 
 class SemesterInfo: UIViewController {
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 	
 	@IBOutlet weak var season: UISegmentedControl!
 	

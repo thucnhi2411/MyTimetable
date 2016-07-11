@@ -9,6 +9,9 @@
 import UIKit
 
 class ScheduleInfo: UIViewController {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     var parentView: WeekTVC = WeekTVC()
 	@IBOutlet weak var course: UITextField!
 	
