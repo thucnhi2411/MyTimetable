@@ -60,7 +60,37 @@ class SemesterTVC: UITableViewController {
             }
         }
 	}
-	
+     func compareSemester( sem1: String, sem2: String) -> Int {
+        let semArr1 = sem1.componentsSeparatedByString(" ")
+        let semArr2 = sem2.componentsSeparatedByString(" ")
+        let year1 = Int(semArr1[1])
+        let year2 = Int(semArr2[1])
+        if year1 > year2 {
+            return 1
+        }
+        else {
+            if year1 < year2 {
+                return -1
+            }
+        else {
+            var score = [String : Int]()
+            score["Spring"] = 0
+            score["Summer"] = 1
+            score["Fall"] = 2
+            if score[semArr1[0]] > score[semArr2[0]] {
+                return 1
+            }
+            else {
+                if score[semArr1[0]] < score[semArr2[0]] {
+                return -1
+            }
+            else {
+                return 0
+            }
+        }
+            } }
+    }
+    
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		if editingStyle == UITableViewCellEditingStyle.Delete {
 			semesterArray.removeAtIndex(indexPath.row)

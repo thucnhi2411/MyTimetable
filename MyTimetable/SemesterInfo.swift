@@ -36,6 +36,7 @@ class SemesterInfo: UIViewController {
 		}
 		let academicYear = year.text!
 		let semesterName = seasonString + " " + academicYear
+        
 		
 		if semesterArray.contains(semesterName) {
 			let alert = UIAlertController(title: "Ooops!", message: "This semester has already existed!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,5 +66,24 @@ class SemesterInfo: UIViewController {
 		}
 		
 	}
-	
+        func sort(var a:[Int]) -> [Int] {
+            var N = a.count
+            for i in 0...N-2 {
+                var min = i
+                var j = i+1
+                
+                for k in j...N-1 {
+                    if a[k] < a[min] {
+                        min = k
+                    }
+                }
+                
+                if i != min {
+                    swap(&a[i], &a[min])
+                }
+            }
+
+            return a
+            
+            }
 }
