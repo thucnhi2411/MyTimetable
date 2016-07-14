@@ -70,8 +70,11 @@ class SemesterInfo: UIViewController {
 		
 	}
     
-    func sortArr(var semesterArray:[String]) -> Array<String> {
+    func sortArr(var semesterArray:[String]) -> [String] {
         var N = semesterArray.count
+		if N == 0 || N == 1 {
+			return semesterArray
+		}
         for i in 0...N-2 {
             var min = i
             var j = i+1
