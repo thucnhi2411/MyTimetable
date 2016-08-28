@@ -9,17 +9,22 @@
 import UIKit
 
 class ScheduleInfo: UIViewController {
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
+
 	@IBOutlet weak var course: UITextField!
 	
-	@IBOutlet weak var date: UISegmentedControl!
+	@IBOutlet weak var location: UITextField!
 	
     @IBOutlet weak var fromString: UILabel!
 	
     @IBOutlet weak var from: UIDatePicker!
+	
+	
+	@IBOutlet weak var mondaySwitch: UISwitch!
+	@IBOutlet weak var tuesdaySwitch: UISwitch!
+	@IBOutlet weak var wednesdaySwitch: UISwitch!
+	@IBOutlet weak var thursdaySwitch: UISwitch!
+	@IBOutlet weak var fridaySwitch: UISwitch!
+	@IBOutlet weak var saturdaySwitch: UISwitch!
 	
     @IBAction func fromDatePicker(sender: AnyObject) {
         var dateFormatter = NSDateFormatter()
@@ -50,7 +55,7 @@ class ScheduleInfo: UIViewController {
 
     }
 	@IBAction func submitButton(sender: UIButton) {
-		let selectedDate = date.selectedSegmentIndex
+		let selectedDate = 0
 		var userDidFuckUp = false
 		
 		// check if any day contains the course with the same name
@@ -78,24 +83,36 @@ class ScheduleInfo: UIViewController {
 			
 		}			
 		else {
-			var hours = fromString.text! + " - " + toString.text!
-			if selectedDate == 0 {
-				addCourse("Monday", courseName: course.text!, time: hours)
-				addCourse("Wednesday", courseName: course.text!, time: hours)
-				addCourse("Friday", courseName: course.text!, time: hours)
-				
-			}
-			else {
-				addCourse("Tuesday", courseName: course.text!, time: hours)
-				addCourse("Thursday", courseName: course.text!, time: hours)
-			}
+			addCourseToDays()
 		}
 		self.navigationController?.popViewControllerAnimated(true)
       
     
     }
     
-    
+	func addCourseToDays() {
+		var hours = fromString.text! + " - " + toString.text!
+		let courseName = course.text! + " - " + location.text!
+		if mondaySwitch.on {
+			addCourse("Monday", courseName: courseName, time: hours)
+		}
+		if tuesdaySwitch.on {
+			addCourse("Tuesday", courseName: courseName, time: hours)
+		}
+		if wednesdaySwitch.on {
+			addCourse("Wednesday", courseName: courseName, time: hours)
+		}
+		if thursdaySwitch.on {
+			addCourse("Thursday", courseName: courseName, time: hours)
+		}
+		if fridaySwitch.on {
+			addCourse("Friday", courseName: courseName, time: hours)
+		}
+		if saturdaySwitch.on {
+			addCourse("Saturday", courseName: courseName, time: hours)
+		}
+
+	}
 	
 	func addCourse(dayName: String, courseName: String, time: String) {
 		// get the schedule for the day
@@ -117,6 +134,9 @@ class ScheduleInfo: UIViewController {
 		semesterSchedule[ dayName ] = daySchedule
 		
 	}
-  
+	
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
+	}
 
 }

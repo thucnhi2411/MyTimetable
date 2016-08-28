@@ -93,6 +93,7 @@ class SemesterInfo: UIViewController {
         return semesterArray
         
     }
+	
     func compareSemester( sem1: String, sem2: String) -> Int {
         var semArr1 = sem1.componentsSeparatedByString(" ")
         var semArr2 = sem2.componentsSeparatedByString(" ")

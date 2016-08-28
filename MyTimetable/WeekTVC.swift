@@ -8,7 +8,7 @@
 
 import UIKit
 
-let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 class WeekTVC: UITableViewController {
     
